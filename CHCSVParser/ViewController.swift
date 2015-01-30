@@ -80,6 +80,7 @@ class ViewController: UIViewController, CHCSVParserDelegate {
         csvWriter.closeStream()
         
         var alert : UIAlertController = UIAlertController(title: "Success", message: "Your Data has been suceesFully saved", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
         self.txtRo.text = ""
