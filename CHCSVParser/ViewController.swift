@@ -23,7 +23,7 @@ class ViewController: UIViewController, CHCSVParserDelegate {
     
     func parserDidBeginDocument(parser: CHCSVParser!) {
         
-        currentRow = NSMutableArray.alloc()
+        currentRow = NSMutableArray()
     }
     
     func parserDidEndDocument(parser: CHCSVParser!) {
@@ -43,11 +43,11 @@ class ViewController: UIViewController, CHCSVParserDelegate {
     }
     func parser(parser: CHCSVParser!, didBeginLine recordNumber: UInt) {
         
-        dict = NSMutableDictionary.alloc()
+        dict = NSMutableDictionary()
     }
     func parser(parser: CHCSVParser!, didReadField field: String!, atIndex fieldIndex: Int) {
         
-        dict.setObject(field, forKey: String("\(fieldIndex)"))
+        dict.setObject(field, forKey: String(fieldIndex))
     }
     func parser(parser: CHCSVParser!, didEndLine recordNumber: UInt) {
         
@@ -66,7 +66,7 @@ class ViewController: UIViewController, CHCSVParserDelegate {
         csvWriter.writeField("Marks")
         csvWriter.finishLine()
         
-        for var i = 0; i < currentRow.count; i{
+        for var i = 0; i < currentRow.count; ++i{
     
             csvWriter.writeField(currentRow.objectAtIndex(i).valueForKey("0"))
             csvWriter.writeField(currentRow.objectAtIndex(i).valueForKey("1"))
